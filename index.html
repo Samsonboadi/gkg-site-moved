@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Verplaatst</title>
+    <meta http-equiv="refresh" content="10;url=https://dataspacegroningen.nl"> <!-- Fallback redirect -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,7 +61,16 @@
                 window.location.href = "https://dataspacegroningen.nl";
             }
         }
-        window.onload = countdown;
+
+        function updateMessage() {
+            let domain = window.location.hostname;
+            document.getElementById("domain-name").innerText = domain;
+        }
+
+        window.onload = function () {
+            countdown();
+            updateMessage();
+        };
     </script>
 </head>
 <body>
@@ -68,7 +78,7 @@
     <div class="container">
         <h2>We zijn verhuisd!</h2>
         <p>
-            De website <strong>GegevensKnooppuntGroningen.nl</strong> is verhuisd naar een nieuw domein.<br>
+            De website <strong><span id="domain-name">gegevensknooppuntgroningen.nl</span></strong> is verhuisd naar een nieuw domein.<br>
             U wordt automatisch doorgestuurd naar 
             <a href="https://dataspacegroningen.nl">DataSpace Groningen</a> in 
             <span class="countdown" id="countdown">10</span> seconden.
